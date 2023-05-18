@@ -1,1 +1,0 @@
-from pytest_celery.components.backend.elastic.fixtures import default_elasticsearch_backend

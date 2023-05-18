@@ -24,10 +24,7 @@ from pytest_celery.components import RedisTestBackend
 from pytest_celery.components import RedisTestBroker
 from pytest_celery.components import celery_base_worker_image
 from pytest_celery.components import celery_rabbitmq_broker
-
-from pytest_celery.components.backend.redis.fixtures import celery_redis_backend
-from pytest_celery.components.backend.elastic.fixtures import celery_elasticsearch_backend, default_elasticsearch_backend
-
+from pytest_celery.components import celery_redis_backend
 from pytest_celery.components import celery_redis_broker
 from pytest_celery.components import celery_setup_worker
 from pytest_celery.components import default_rabbitmq_broker
@@ -61,6 +58,9 @@ from pytest_celery.components import default_worker_initial_content
 from pytest_celery.components import default_worker_signals
 from pytest_celery.components import default_worker_tasks
 from pytest_celery.components import default_worker_volume
+from pytest_celery.components.backend.elasticsearch import celery_elasticsearch_backend
+from pytest_celery.components.backend.elasticsearch import default_elasticsearch_container
+from pytest_celery.containers.elasticsearch import ElasticsearchContainer
 from pytest_celery.containers import CeleryWorkerContainer
 from pytest_celery.containers import RabbitMQContainer
 from pytest_celery.containers import RedisContainer
