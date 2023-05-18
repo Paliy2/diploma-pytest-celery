@@ -39,10 +39,12 @@ CELERY_BROKER_CLUSTER = "celery_broker_cluster"
 # Components fixtures
 CELERY_SETUP_WORKER = "celery_setup_worker"
 CELERY_REDIS_BACKEND = "celery_redis_backend"
+CELERY_ELASTICSEARCH_BACKEND = "celery_elasticsearch_backend"
 CELERY_REDIS_BROKER = "celery_redis_broker"
 CELERY_RABBITMQ_BROKER = "celery_rabbitmq_broker"
 DEFAULT_WORKER = "default_worker_container"
 DEFAULT_REDIS_BACKEND = "default_redis_backend"
+DEFAULT_ELASTICSEARCH_BACKEND = "default_elasticsearch_container"
 DEFAULT_RABBITMQ_BROKER = "default_rabbitmq_broker"
 DEFAULT_REDIS_BROKER = "default_redis_broker"
 
@@ -50,7 +52,7 @@ DEFAULT_REDIS_BROKER = "default_redis_broker"
 ######################
 
 DEFAULT_WORKERS = (DEFAULT_WORKER,)
-DEFAULT_BACKENDS = (DEFAULT_REDIS_BACKEND,)
+DEFAULT_BACKENDS = (DEFAULT_REDIS_BACKEND, DEFAULT_ELASTICSEARCH_BACKEND)
 DEFAULT_BROKERS = (
     DEFAULT_RABBITMQ_BROKER,
     DEFAULT_REDIS_BROKER,
@@ -80,7 +82,7 @@ ALL_CLUSTERS_FIXTURES = (
     CELERY_BROKER_CLUSTER,
 )
 ALL_CELERY_WORKERS = (CELERY_SETUP_WORKER,)
-ALL_CELERY_BACKENDS = (CELERY_REDIS_BACKEND,)
+ALL_CELERY_BACKENDS = (CELERY_REDIS_BACKEND, CELERY_ELASTICSEARCH_BACKEND)
 ALL_CELERY_BROKERS = (
     CELERY_REDIS_BROKER,
     CELERY_RABBITMQ_BROKER,
@@ -140,12 +142,32 @@ DEFAULT_REDIS_BACKEND_ENV = REDIS_ENV
 DEFAULT_REDIS_BACKEND_IMAGE = REDIS_IMAGE
 DEFAULT_REDIS_BACKEND_PORTS = REDIS_PORTS
 
-
 # Default Broker #
 ###################
 DEFAULT_REDIS_BROKER_ENV = REDIS_ENV
 DEFAULT_REDIS_BROKER_IMAGE = REDIS_IMAGE
 DEFAULT_REDIS_BROKER_PORTS = REDIS_PORTS
+
+
+##########################
+# Elasticsearch Container Settings
+##########################
+
+# Default container settings for all container fixtures
+
+ELASTICSEARCH_IMAGE = "docker.elastic.co/elasticsearch/elasticsearch:8.2.2"
+ELASTICSEARCH_PORTS = {"9200/tcp": None}
+ELASTICSEARCH_ENV: dict = {}
+ELASTICSEARCH_CONTAINER_TIMEOUT = CONTAINER_TIMEOUT
+
+# Docker containers settings
+#################################################
+
+# Default Backend #
+####################
+DEFAULT_ELASTICSEARCH_BACKEND_ENV = ELASTICSEARCH_ENV
+DEFAULT_ELASTICSEARCH_BACKEND_IMAGE = ELASTICSEARCH_IMAGE
+DEFAULT_ELASTICSEARCH_BACKEND_PORTS = ELASTICSEARCH_PORTS
 
 
 #############################
